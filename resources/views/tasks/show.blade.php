@@ -14,6 +14,10 @@
     <td>{{$task->content}}</td>
   </tr>
   <tr>
+    <th>タスクのステータス</th>
+    <td>{{$task->status}}</td>
+  </tr>
+  <tr>
     <th>作成日時</th>
     <td>{{date('Y年m月d日 H:i', strtotime($task->created_at))}}</td>
   </tr>

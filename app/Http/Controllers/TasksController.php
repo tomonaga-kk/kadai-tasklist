@@ -20,8 +20,16 @@ class TasksController extends Controller
 
     public function store(Request $request)
     {
+        // バリデーション
+        $request->validate([
+            'content' => 'required',         // 入力必須
+            'status'  => 'required||max:10' // 入力必須、10文字以内
+        ]);
+        
+        // DBに保存
         $task = new Task;
         $task->content = $request->content;
+        $task->stauts  = $request->status;
         $task->save();
         
         return redirect('/');
@@ -42,8 +50,16 @@ class TasksController extends Controller
 
     public function update(Request $request, string $id)
     {
+        // バリデーション
+        $request->validate([
+            'content' => 'required',         // 入力必須
+            'status'  => 'required||max:10' // 入力必須、10文字以内
+        ]);
+        
+        // DBに保存
         $task = Task::findOrFail($id);
         $task->content = $request->content;
+        $task->status  = $request->status;
         $task->save();
         
         return redirect()->route('tasks.show', [$task->id]);
