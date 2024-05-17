@@ -25,7 +25,12 @@
           <label for="status" class="block text-sm font-medium leading-6 text-gray-900">タスクのステータス</label>
           <div class="mt-2">
             <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 sm:max-w-md">
-              <input type="text" name="status" id="status" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900" placeholder="未着手">
+              <!--<input type="text" name="status" id="status" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900" placeholder="未着手">-->
+              <select name="status" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900">
+                <option value="未着手">未着手</option>
+                <option value="対応中">対応中</option>
+                <option value="完了">完了</option>
+              </select>
             </div>
           </div>
         </div>
@@ -35,7 +40,7 @@
   </div>
 
   <div class="mt-6 flex items-center justify-end gap-x-6">
-    <a href="{{route('tasks.index')}}" class="text-sm font-semibold leading-6 text-gray-900">Cancel</a>
+    {{--<a href="{{route('tasks.index')}}" class="text-sm font-semibold leading-6 text-gray-900">Cancel</a> --}}
     <button type="submit" class="px-3 py-1 bg-lime-700 text-white rounded hover:bg-lime-600">保存</button>
   </div>
 </form>

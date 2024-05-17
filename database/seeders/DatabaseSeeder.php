@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Task;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,6 +21,8 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         
-        Task::factory()->count(10)->create();
+        $this->call([UsersTableSeeder::class]);
+        // User::factory()->count(5)->create();
+        Task::factory()->count(50)->create();
     }
 }

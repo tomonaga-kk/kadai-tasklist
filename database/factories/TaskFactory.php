@@ -17,9 +17,12 @@ class TaskFactory extends Factory
      */
     public function definition(): array
     {
+        $status_list = ['未着手', '対応中', '完了'];
+        
         return [
-            'content' => $this->faker->realText(100),
-            'status' => $this->faker->realText(10),
+            'user_id' => rand(1, 10),
+            'content' => $this->faker->realText(50),
+            'status' => $status_list[array_rand($status_list)],
         ];
     }
 }
