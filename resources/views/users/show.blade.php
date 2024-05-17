@@ -2,7 +2,12 @@
 
 
 @section('content')
-<h1 class="pb-5">{{$user->name}}さんのタスク一覧</h1>
+  @auth
+    <h1 class="pb-5">{{$user->name}}さんのタスク一覧</h1>
+  @endauth
+  @guest
+    <h1 class="pb-5">タスク一覧</h1>
+  @endguest
 
 <div class="overflow-x-auto">
   <div class="flex justify-end">

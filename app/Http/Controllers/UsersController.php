@@ -23,25 +23,25 @@ class UsersController extends Controller
     
     
     
-    public function show(){
+    // public function show(){
         
-        $tasks = [];
-        if(auth()->user()){
+    //     $tasks = [];
+    //     if(auth()->user()){
             
-            // Authファサードでログインユーザ情報取得
-            // $user = Auth::user();
+    //         // Authファサードでログインユーザ情報取得
+    //         // $user = Auth::user();
             
-            // authヘルパーでログインユーザ情報取得
-            $user = auth()->user();
+    //         // authヘルパーでログインユーザ情報取得
+    //         $user = auth()->user();
             
-            $tasks = $user->tasks()->get();
-        }
+    //         $tasks = $user->tasks()->get();
+    //     }
         
-        return view('users.show', [
-            'user'  => $user,
-            'tasks' => $tasks,
-        ]);
-    }
+    //     return view('users.show', [
+    //         'user'  => $user,
+    //         'tasks' => $tasks,
+    //     ]);
+    // }
 }
 
 

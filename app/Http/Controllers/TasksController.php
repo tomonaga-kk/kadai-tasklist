@@ -10,12 +10,30 @@ class TasksController extends Controller
 {
     public function index()
     {
-        $tasks = Task::all();
+        $user = [];
+        $tasks = [];
+        if(auth()->user()){
+            
+            // Authファサードでログインユーザ情報取得
+            // $user = Auth::user();
+            
+            // authヘルパーでログインユーザ情報取得
+            $user = auth()->user();
+            
+            $tasks = $user->tasks()->get();
+        }
         
-        // return view('tasks.index', compact('tasks'));
-        return view('tasks.index', [
-            'tasks' => $tasks,    
+        return view('users.show', [
+            'user'  => $user,
+            'tasks' => $tasks,
         ]);
+        
+        // $tasks = Task::all();
+        
+        // // return view('tasks.index', compact('tasks'));
+        // return view('tasks.index', [
+        //     'tasks' => $tasks,    
+        // ]);
     }
 
     public function create()

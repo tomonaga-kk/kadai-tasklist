@@ -18,13 +18,13 @@ use App\Http\Controllers\UsersController;
 |
 */
 
-Route::get('/',          [UsersController::class, 'show']);
-Route::get('/dashboard', [UsersController::class, 'show'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/',          [TasksController::class, 'index']);
+Route::get('/dashboard', [TasksController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 
 Route::middleware('auth')->group(function () {
-    Route::resource('tasks', TasksController::class)->only(['show', 'create', 'store', 'edit', 'update', 'destroy']);
-    Route::resource('users', UsersController::class)->only(['show']);
+    Route::resource('tasks', TasksController::class)->only(['index', 'show', 'create', 'store', 'edit', 'update', 'destroy']);
+    // Route::resource('users', UsersController::class)->only(['show']);
     
     // ↓↓　開発用コード　↓↓ /////////////////////////////////////////////////////////
     // Route::get('/tasks',                      [TasksController::class, 'index']);
