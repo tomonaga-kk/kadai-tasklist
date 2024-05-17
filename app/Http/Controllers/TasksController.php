@@ -46,7 +46,7 @@ class TasksController extends Controller
         
         // 「ログインユーザ =タスク所有者」の時のみ処理を許可する
         $task = Task::findOrFail($id);
-        if(Auth::user()->id == $task->user()->first()->id){
+        if(Auth::user()->id == $task->user_id){
             return view('tasks.show', compact('task'));
         }
         
@@ -57,7 +57,7 @@ class TasksController extends Controller
     {
         // 「ログインユーザ =タスク所有者」の時のみ処理を許可する
         $task = Task::findOrFail($id);
-        if(Auth::user()->id == $task->user()->first()->id){
+        if(Auth::user()->id == $task->user_id){
             $task = Task::findOrFail($id);
             return view('tasks.edit', compact('task'));
         }
@@ -68,7 +68,7 @@ class TasksController extends Controller
     {
         // 「ログインユーザ =タスク所有者」の時のみ処理を許可する
         $task = Task::findOrFail($id);
-        if(Auth::user()->id == $task->user()->first()->id){
+        if(Auth::user()->id == $task->user_id){
             
             // バリデーション
             $request->validate([
@@ -92,7 +92,7 @@ class TasksController extends Controller
     {
         // 「ログインユーザ =タスク所有者」の時のみ処理を許可する
         $task = Task::findOrFail($id);
-        if(Auth::user()->id == $task->user()->first()->id){
+        if(Auth::user()->id == $task->user_id){
             
             $task = Task::findOrFail($id);
             $task->delete();

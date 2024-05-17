@@ -2,7 +2,7 @@
 
 
 @section('content')
-<h1 class="pb-5">タスク一覧</h1>
+<h1 class="pb-5">{{$user->name}}さんのタスク一覧</h1>
 
 <div class="overflow-x-auto">
   <div class="flex justify-end">
@@ -15,6 +15,7 @@
         <th>ID</th>
         <th>タスク内容</th>
         <th>タスクのステータス</th>
+        <th>担当者</th>
         <th>作成日時</th>
         <th>更新日時</th>
       </tr>
@@ -28,6 +29,7 @@
               <a href="{{route('tasks.show', $task->id)}}" class="text-blue-500 hover:border-b hover:border-blue-500">{{$task->content}}</a>
             </td>
             <td>{{$task->status}}</td>
+            <td>{{$task->user()->first()->name}}</td>
             <td>{{date('Y年m月d日 H:i', strtotime($task->created_at))}}</td>
             <td>{{date('Y年m月d日 H:i', strtotime($task->updated_at))}}</td>
           </tr>
